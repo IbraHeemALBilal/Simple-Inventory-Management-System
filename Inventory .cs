@@ -9,10 +9,11 @@ namespace Simple_Inventory_Management_System
 {
     internal class Inventory
     {
-        private ArrayList products;
+        private List<Product> products;
+
         public Inventory()
-        { 
-            products = new ArrayList();
+        {
+            products = new List<Product>();
         }  
         public void add(Product product)
         {
@@ -101,7 +102,6 @@ namespace Simple_Inventory_Management_System
                 Console.WriteLine("Item not exists !! ");
             }
         }//search
-
 
     }
 }
