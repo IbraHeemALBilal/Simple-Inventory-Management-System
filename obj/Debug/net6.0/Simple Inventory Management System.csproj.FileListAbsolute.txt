@@ -1,0 +1,30 @@
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\bin\Debug\net6.0\Simple Inventory Management System.exe
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\bin\Debug\net6.0\Simple Inventory Management System.deps.json
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\bin\Debug\net6.0\Simple Inventory Management System.runtimeconfig.json
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\bin\Debug\net6.0\Simple Inventory Management System.dll
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\bin\Debug\net6.0\Simple Inventory Management System.pdb
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\obj\Debug\net6.0\Simple Inventory Management System.csproj.AssemblyReference.cache
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\obj\Debug\net6.0\Simple Inventory Management System.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\obj\Debug\net6.0\Simple Inventory Management System.AssemblyInfoInputs.cache
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\obj\Debug\net6.0\Simple Inventory Management System.AssemblyInfo.cs
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\obj\Debug\net6.0\Simple Inventory Management System.csproj.CoreCompileInputs.cache
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\obj\Debug\net6.0\Simple Inventory Management System.dll
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\obj\Debug\net6.0\refint\Simple Inventory Management System.dll
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\obj\Debug\net6.0\Simple Inventory Management System.pdb
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\obj\Debug\net6.0\Simple Inventory Management System.genruntimeconfig.cache
+C:\Users\Ola\Desktop\Simple Inventory Management System\Simple Inventory Management System\obj\Debug\net6.0\ref\Simple Inventory Management System.dll
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\bin\Debug\net6.0\Simple Inventory Management System.exe
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\bin\Debug\net6.0\Simple Inventory Management System.deps.json
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\bin\Debug\net6.0\Simple Inventory Management System.runtimeconfig.json
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\bin\Debug\net6.0\Simple Inventory Management System.dll
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\bin\Debug\net6.0\Simple Inventory Management System.pdb
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\obj\Debug\net6.0\Simple Inventory Management System.csproj.AssemblyReference.cache
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\obj\Debug\net6.0\Simple Inventory Management System.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\obj\Debug\net6.0\Simple Inventory Management System.AssemblyInfoInputs.cache
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\obj\Debug\net6.0\Simple Inventory Management System.AssemblyInfo.cs
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\obj\Debug\net6.0\Simple Inventory Management System.csproj.CoreCompileInputs.cache
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\obj\Debug\net6.0\Simple Inventory Management System.dll
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\obj\Debug\net6.0\refint\Simple Inventory Management System.dll
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\obj\Debug\net6.0\Simple Inventory Management System.pdb
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\obj\Debug\net6.0\Simple Inventory Management System.genruntimeconfig.cache
+C:\Users\Ola\Desktop\Simple-Inventory-Management-System\obj\Debug\net6.0\ref\Simple Inventory Management System.dll
