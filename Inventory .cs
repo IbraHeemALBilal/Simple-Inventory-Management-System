@@ -31,6 +31,13 @@ namespace Simple_Inventory_Management_System
                 products.Add(product);
             }
         }//add
+        public void display()
+        {
+            foreach (Product p in products)
+            {
+                Console.WriteLine("Name : " + p.name + " ||  " + "Price : " + p.price + " ||  " + "Quantity : " + p.quantity);
+            }
+        }
 
     }
 }

@@ -13,6 +13,7 @@ namespace Simple_Inventory_Management_System
 
                 Console.WriteLine("Choose what you need :  ");
                 Console.WriteLine("1 - Add a product . ");
+                Console.WriteLine("2 - View all products . ");
                 Console.WriteLine("6 - Exit . ");
                 Console.WriteLine("- - - - - - - - - - - - - ");
                 choise = int.Parse(Console.ReadLine());
@@ -27,6 +28,11 @@ namespace Simple_Inventory_Management_System
                     inventory.add(new Product(product_Name, product_Price, product_quantity));
 
                 }//choise 1 to add 
+
+                if (choise == 2)
+                {
+                    inventory.display();
+                } //choise2  to display
 
                 if (choise == 6)
                 {
