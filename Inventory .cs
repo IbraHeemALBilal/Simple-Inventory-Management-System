@@ -38,6 +38,33 @@ namespace Simple_Inventory_Management_System
                 Console.WriteLine("Name : " + p.name + " ||  " + "Price : " + p.price + " ||  " + "Quantity : " + p.quantity);
             }
         }
+        public void edit(String product_Name)
+        {
+            int _existsInList = 0;
+            foreach (Product p in products)
+            {
+                if ((p.name) == (product_Name))
+                {
+                    _existsInList = 1;
+                    Console.WriteLine("Enter the new name : ");
+                    String new_Name = Console.ReadLine();
+                    Console.WriteLine("Enter the new price : ");
+                    double new_Price = double.Parse(Console.ReadLine());
+                    Console.WriteLine("Enter the new quantity : ");
+                    int new_quantity = int.Parse(Console.ReadLine());
+                    p.name = new_Name;
+                    p.price = new_Price;
+                    p.quantity = new_quantity;
+                    Console.WriteLine("Product is edited :) ");
+
+                    break;
+                }
+            }
+            if (_existsInList == 0)
+            {
+                Console.WriteLine("Item not exists !! ");
+            }
+        }
 
     }
 }
