@@ -16,6 +16,7 @@ namespace Simple_Inventory_Management_System
                 Console.WriteLine("2 - View all products . ");
                 Console.WriteLine("3 - Edit a product . ");
                 Console.WriteLine("4 - Delete a product . ");
+                Console.WriteLine("5 - Search for a product . ");
                 Console.WriteLine("6 - Exit . ");
                 Console.WriteLine("- - - - - - - - - - - - - ");
                 choise = int.Parse(Console.ReadLine());
@@ -47,6 +48,12 @@ namespace Simple_Inventory_Management_System
                     String product_Name = Console.ReadLine();
                     inventory.delete(product_Name);
                 } //choise4  to delete
+                if (choise == 5)
+                {
+                    Console.WriteLine("Enter the name of the product you want to delete  : ");
+                    String product_Name = Console.ReadLine();
+                    inventory.search(product_Name);
+                } //choise5  to search
 
                 if (choise == 6)
                 {

@@ -82,8 +82,25 @@ namespace Simple_Inventory_Management_System
             {
                 Console.WriteLine("Item not exists !! ");
             }
-        }
+        }//delete
+        public void search(String product_Name)
+        {
+            int _existsInList = 0;
+            foreach (Product p in products)
+            {
+                if ((p.name) == (product_Name))
+                {
+                    _existsInList = 1;
+                    Console.WriteLine("Name : " + p.name + " ||  " + "Price : " + p.price + " ||  " + "Quantity : " + p.quantity);
 
+                    break;
+                }
+            }
+            if (_existsInList == 0)
+            {
+                Console.WriteLine("Item not exists !! ");
+            }
+        }//search
 
 
     }
