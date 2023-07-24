@@ -37,7 +37,7 @@ namespace Simple_Inventory_Management_System
             {
                 Console.WriteLine("Name : " + p.name + " ||  " + "Price : " + p.price + " ||  " + "Quantity : " + p.quantity);
             }
-        }
+        }// display
         public void edit(String product_Name)
         {
             int _existsInList = 0;
@@ -64,7 +64,27 @@ namespace Simple_Inventory_Management_System
             {
                 Console.WriteLine("Item not exists !! ");
             }
+        }//edit
+        public void delete(String product_Name)
+        {
+            int _existsInList = 0;
+            foreach (Product p in products)
+            {
+                if ((p.name) == (product_Name))
+                {
+                    _existsInList = 1;
+                    products.Remove(p);
+
+                    break;
+                }
+            }
+            if (_existsInList == 0)
+            {
+                Console.WriteLine("Item not exists !! ");
+            }
         }
+
+
 
     }
 }
