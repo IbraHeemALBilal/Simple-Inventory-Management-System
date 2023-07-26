@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Simple_Inventory_Management_System
 {
@@ -14,94 +10,90 @@ namespace Simple_Inventory_Management_System
         public Inventory()
         {
             products = new List<Product>();
-        }  
+        }
+
         public void add(Product product)
         {
-            int _existsInList = 0;
-            foreach(Product p in products)
+            if (product.isValid())
             {
-                if((p.name)==(product.name))
+                var _existsInList = 0;
+                foreach (Product p in products)
                 {
-                    _existsInList = 1;
-                    p.quantity += product.quantity;
-                    break;
+                    if ((p.name) == (product.name))
+                    {
+                        _existsInList = 1;
+                        p.quantity += product.quantity;
+                        break;
+                    }
+                }
+                if (_existsInList == 0)
+                {
+                    products.Add(product);
                 }
             }
-            if (_existsInList == 0) 
-            { 
-                products.Add(product);
-            }
+            else Console.WriteLine("Product not valid :( ");
         }//add
+
         public void display()
         {
             foreach (Product p in products)
             {
-                Console.WriteLine("Name : " + p.name + " ||  " + "Price : " + p.price + " ||  " + "Quantity : " + p.quantity);
+                Console.WriteLine("Name: " + p.name + " || Price: " + p.price + " || Quantity: " + p.quantity);
             }
-        }// display
-        public void edit(String product_Name)
-        {
-            int _existsInList = 0;
-            foreach (Product p in products)
-            {
-                if ((p.name) == (product_Name))
-                {
-                    _existsInList = 1;
-                    Console.WriteLine("Enter the new name : ");
-                    String new_Name = Console.ReadLine();
-                    Console.WriteLine("Enter the new price : ");
-                    double new_Price = double.Parse(Console.ReadLine());
-                    Console.WriteLine("Enter the new quantity : ");
-                    int new_quantity = int.Parse(Console.ReadLine());
-                    p.name = new_Name;
-                    p.price = new_Price;
-                    p.quantity = new_quantity;
-                    Console.WriteLine("Product is edited :) ");
+        }//display
 
-                    break;
-                }
-            }
-            if (_existsInList == 0)
+        public void edit(string product_Name)
+        {
+            var existingProductIndex = products.FindIndex(p => p.name == product_Name);
+            if (existingProductIndex != -1)
             {
-                Console.WriteLine("Item not exists !! ");
+                Product existingProduct = products[existingProductIndex];
+                Console.WriteLine("Enter the new name: ");
+                string new_Name = Console.ReadLine();
+                Console.WriteLine("Enter the new price: ");
+                double new_Price = double.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the new quantity: ");
+                int new_quantity = int.Parse(Console.ReadLine());
+
+                
+                existingProduct.name = new_Name;
+                existingProduct.price = new_Price;
+                existingProduct.quantity = new_quantity;
+
+                Console.WriteLine("Product is edited :)");
+            }
+            else
+            {
+                Console.WriteLine("Item not exists !!");
             }
         }//edit
+
+
         public void delete(String product_Name)
         {
-            int _existsInList = 0;
-            foreach (Product p in products)
+            var existingProductIndex = products.FindIndex(p => p.name == product_Name);
+            if (existingProductIndex != -1)
             {
-                if ((p.name) == (product_Name))
-                {
-                    _existsInList = 1;
-                    products.Remove(p);
-
-                    break;
-                }
+                products.RemoveAt(existingProductIndex);
+                Console.WriteLine("Product is deleted :)");
             }
-            if (_existsInList == 0)
+            else
             {
-                Console.WriteLine("Item not exists !! ");
+                Console.WriteLine("Item not exists !!");
             }
         }//delete
-        public void search(String product_Name)
-        {
-            int _existsInList = 0;
-            foreach (Product p in products)
-            {
-                if ((p.name) == (product_Name))
-                {
-                    _existsInList = 1;
-                    Console.WriteLine("Name : " + p.name + " ||  " + "Price : " + p.price + " ||  " + "Quantity : " + p.quantity);
 
-                    break;
-                }
+        public void search(string product_Name)
+        {
+            var existingProduct = products.Find(p => p.name == product_Name);
+            if (existingProduct != null)
+            {
+                Console.WriteLine("Name: " + existingProduct.name + " || Price: " + existingProduct.price + " || Quantity: " + existingProduct.quantity);
             }
-            if (_existsInList == 0)
+            else
             {
                 Console.WriteLine("Item not exists !! ");
             }
-        }//search
-
-    }
-}
+        } //search
+    }//class
+}// name space

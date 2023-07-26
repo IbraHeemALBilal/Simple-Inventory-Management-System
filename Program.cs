@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Simple_Inventory_Management_System
 {
@@ -7,7 +8,7 @@ namespace Simple_Inventory_Management_System
         static void Main(string[] args)
         {
             Inventory inventory = new Inventory();
-            int choise;
+            int choice;
             while (true)
             {
                 Console.WriteLine("- - - - - - - - - - - - - ");
@@ -19,48 +20,65 @@ namespace Simple_Inventory_Management_System
                 Console.WriteLine("5 - Search for a product . ");
                 Console.WriteLine("6 - Exit . ");
                 Console.WriteLine("- - - - - - - - - - - - - ");
-                choise = int.Parse(Console.ReadLine());
-                if (choise == 1 )
-                {
-                    Console.WriteLine("Enter the name of the product : ");
-                    String product_Name = Console.ReadLine();
-                    Console.WriteLine("Enter the price of the product : ");
-                    double product_Price = double.Parse(Console.ReadLine());
-                    Console.WriteLine("Enter the quantity of the product : ");
-                    int product_quantity = int.Parse(Console.ReadLine());
-                    inventory.add(new Product(product_Name, product_Price, product_quantity));
 
-                }//choise 1 to add 
+                if (!int.TryParse(Console.ReadLine(), out choice))
+                {
+                    Console.WriteLine("Invalid input. Please choose a number from 1-6.");
+                    continue;
+                }
 
-                if (choise == 2)
+                switch (choice)
                 {
-                    inventory.display();
-                } //choise2  to display
-                if (choise == 3)
-                {
-                    Console.WriteLine("Enter the name of the product you want to edit  : ");
-                    String product_Name = Console.ReadLine();
-                    inventory.edit(product_Name);
-                } //choise3  to edit
-                if (choise == 4)
-                {
-                    Console.WriteLine("Enter the name of the product you want to delete  : ");
-                    String product_Name = Console.ReadLine();
-                    inventory.delete(product_Name);
-                } //choise4  to delete
-                if (choise == 5)
-                {
-                    Console.WriteLine("Enter the name of the product you want to delete  : ");
-                    String product_Name = Console.ReadLine();
-                    inventory.search(product_Name);
-                } //choise5  to search
+                    case 1:
+                        Console.WriteLine("Enter the name of the product : ");
+                        string product_Name = Console.ReadLine();
+                        Console.WriteLine("Enter the price of the product : ");
+                        double product_Price;
+                        if (!double.TryParse(Console.ReadLine(), out product_Price))
+                        {
+                            Console.WriteLine("Invalid price input. Please enter a valid number.");
+                            continue;
+                        }
+                        Console.WriteLine("Enter the quantity of the product : ");
+                        int product_Quantity;
+                        if (!int.TryParse(Console.ReadLine(), out product_Quantity))
+                        {
+                            Console.WriteLine("Invalid quantity input. Please enter a valid number.");
+                            continue;
+                        }
+                        inventory.add(new Product(product_Name, product_Price, product_Quantity));
+                        break;
 
-                if (choise == 6)
-                {
-                    break;
-                } //choise 6 to exit 
+                    case 2:
+                        inventory.display();
+                        break;
 
-            }//while loop
+                    case 3:
+                        Console.WriteLine("Enter the name of the product you want to edit: ");
+                        string productToEdit = Console.ReadLine();
+                        inventory.edit(productToEdit);
+                        break;
+
+                    case 4:
+                        Console.WriteLine("Enter the name of the product you want to delete: ");
+                        string productToDelete = Console.ReadLine();
+                        inventory.delete(productToDelete);
+                        break;
+
+                    case 5:
+                        Console.WriteLine("Enter the name of the product you want to search for: ");
+                        string productToSearch = Console.ReadLine();
+                        inventory.search(productToSearch);
+                        break;
+
+                    case 6:
+                        return;
+
+                    default:
+                        Console.WriteLine("Invalid choice. Please choose a number from 1 - 6.");
+                        break;
+                }
+            }
         }
     }
 }

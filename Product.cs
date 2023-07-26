@@ -29,7 +29,7 @@ namespace Simple_Inventory_Management_System
                 }
                 else
                 {
-                    throw new ArgumentException("Price cannot be negative.");
+                    Console.WriteLine("Price can't be negative .. ");
                 }
             }
         }
@@ -45,18 +45,21 @@ namespace Simple_Inventory_Management_System
                 }
                 else
                 {
-                    throw new ArgumentException("Quantity cannot be negative.");
+                    Console.WriteLine("Quantity can't be negative .. ");
                 }
             }
         }
         public Product(String name, double price, int quantitiy)
         {
-              this.name = name;
-              this.price = price;
-              this.quantity = quantitiy;  
+            this.name = name;
+            this.price = price;
+            this.quantity = quantitiy;
         }
-
-
-
+        public bool isValid()
+        {
+            if (quantity > 0 && price > 0 && name != null)
+                return true;
+            else return false;
+        }
     }
 }
