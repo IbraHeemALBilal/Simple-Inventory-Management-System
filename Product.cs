@@ -11,7 +11,6 @@ namespace Simple_Inventory_Management_System
         private string Name;
         private double Price;
         private int Quantity;
-
         public string name
         {
             get { return Name; }
@@ -33,7 +32,6 @@ namespace Simple_Inventory_Management_System
                 }
             }
         }
-
         public int quantity
         {
             get { return Quantity; }
@@ -49,12 +47,14 @@ namespace Simple_Inventory_Management_System
                 }
             }
         }
+
         public Product(String name, double price, int quantitiy)
         {
             this.name = name;
             this.price = price;
             this.quantity = quantitiy;
         }
+
         public bool isValid()
         {
             if (quantity > 0 && price > 0 && name != null)
