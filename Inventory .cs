@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace Simple_Inventory_Management_System
+namespace SimpleInventoryManagementSystem
 {
     internal class Inventory
     {
@@ -12,88 +13,67 @@ namespace Simple_Inventory_Management_System
             products = new List<Product>();
         }
 
-        public void add(Product product)
+        public bool Add(Product product)
         {
-            if (product.isValid())
+            if (product.IsValid())
             {
-                var _existsInList = 0;
-                foreach (Product p in products)
+                var existingProduct = products.FirstOrDefault(p => p.Name == product.Name);
+
+                if (existingProduct != null)
                 {
-                    if ((p.name) == (product.name))
-                    {
-                        _existsInList = 1;
-                        p.quantity += product.quantity;
-                        break;
-                    }
+                    existingProduct.Quantity += product.Quantity;
                 }
-                if (_existsInList == 0)
+                else
                 {
                     products.Add(product);
                 }
-            }
-            else Console.WriteLine("Product not valid :( ");
-        }//add
-
-        public void display()
-        {
-            foreach (Product p in products)
-            {
-                Console.WriteLine("Name: " + p.name + " || Price: " + p.price + " || Quantity: " + p.quantity);
-            }
-        }//display
-
-        public void edit(string product_Name)
-        {
-            var existingProductIndex = products.FindIndex(p => p.name == product_Name);
-            if (existingProductIndex != -1)
-            {
-                Product existingProduct = products[existingProductIndex];
-                Console.WriteLine("Enter the new name: ");
-                string new_Name = Console.ReadLine();
-                Console.WriteLine("Enter the new price: ");
-                double new_Price = double.Parse(Console.ReadLine());
-                Console.WriteLine("Enter the new quantity: ");
-                int new_quantity = int.Parse(Console.ReadLine());
-
-                
-                existingProduct.name = new_Name;
-                existingProduct.price = new_Price;
-                existingProduct.quantity = new_quantity;
-
-                Console.WriteLine("Product is edited :)");
+                return true ;
             }
             else
             {
-                Console.WriteLine("Item not exists !!");
+                return false;
             }
-        }//edit
+        }
 
-
-        public void delete(String product_Name)
+        public List<Product> Display()
         {
-            var existingProductIndex = products.FindIndex(p => p.name == product_Name);
-            if (existingProductIndex != -1)
-            {
-                products.RemoveAt(existingProductIndex);
-                Console.WriteLine("Product is deleted :)");
-            }
-            else
-            {
-                Console.WriteLine("Item not exists !!");
-            }
-        }//delete
+            return products;
+        }
 
-        public void search(string product_Name)
+        public bool Edit(string productName , string newName , decimal newPrice , int newQuantity )
         {
-            var existingProduct = products.Find(p => p.name == product_Name);
+            var existingProduct = products.FirstOrDefault(p => p.Name == productName);
             if (existingProduct != null)
             {
-                Console.WriteLine("Name: " + existingProduct.name + " || Price: " + existingProduct.price + " || Quantity: " + existingProduct.quantity);
+                existingProduct.Name = newName;
+                existingProduct.Price =newPrice;
+                existingProduct.Quantity = newQuantity;
+                return true;
             }
             else
             {
-                Console.WriteLine("Item not exists !! ");
+                return false;
             }
-        } //search
-    }//class
-}// name space
+        }
+
+        public bool Delete(string productName)
+        {
+            var existingProduct = products.FirstOrDefault(p => p.Name == productName);
+            if (existingProduct != null)
+            {
+                products.Remove(existingProduct);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Product Search(string productName)
+        {
+            var existingProduct = products.FirstOrDefault(p => p.Name == productName);
+                return existingProduct;
+        }
+    }
+}

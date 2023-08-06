@@ -1,27 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace Simple_Inventory_Management_System
+namespace SimpleInventoryManagementSystem
 {
     internal class Program
     {
+        private const int AddProductOption = 1;
+        private const int ViewAllProductsOption = 2;
+        private const int EditProductOption = 3;
+        private const int DeleteProductOption = 4;
+        private const int SearchProductOption = 5;
+        private const int ExitOption = 6;
+
         static void Main(string[] args)
         {
-            Inventory inventory = new Inventory();
+            var inventory = new Inventory();
             int choice;
             while (true)
             {
-                Console.WriteLine("- - - - - - - - - - - - - ");
-                Console.WriteLine("Choose what you need :  ");
-                Console.WriteLine("1 - Add a product . ");
-                Console.WriteLine("2 - View all products . ");
-                Console.WriteLine("3 - Edit a product . ");
-                Console.WriteLine("4 - Delete a product . ");
-                Console.WriteLine("5 - Search for a product . ");
-                Console.WriteLine("6 - Exit . ");
-                Console.WriteLine("- - - - - - - - - - - - - ");
+                DisplayMenuOptions();
 
-                if (!int.TryParse(Console.ReadLine(), out choice))
+                if (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 6)
                 {
                     Console.WriteLine("Invalid input. Please choose a number from 1-6.");
                     continue;
@@ -29,49 +27,27 @@ namespace Simple_Inventory_Management_System
 
                 switch (choice)
                 {
-                    case 1:
-                        Console.WriteLine("Enter the name of the product : ");
-                        string product_Name = Console.ReadLine();
-                        Console.WriteLine("Enter the price of the product : ");
-                        double product_Price;
-                        if (!double.TryParse(Console.ReadLine(), out product_Price))
-                        {
-                            Console.WriteLine("Invalid price input. Please enter a valid number.");
-                            continue;
-                        }
-                        Console.WriteLine("Enter the quantity of the product : ");
-                        int product_Quantity;
-                        if (!int.TryParse(Console.ReadLine(), out product_Quantity))
-                        {
-                            Console.WriteLine("Invalid quantity input. Please enter a valid number.");
-                            continue;
-                        }
-                        inventory.add(new Product(product_Name, product_Price, product_Quantity));
+                    case AddProductOption:
+                        AddProduct(inventory);
                         break;
 
-                    case 2:
-                        inventory.display();
+                    case ViewAllProductsOption:
+                        ViewAllProducts( inventory);
                         break;
 
-                    case 3:
-                        Console.WriteLine("Enter the name of the product you want to edit: ");
-                        string productToEdit = Console.ReadLine();
-                        inventory.edit(productToEdit);
+                    case EditProductOption:
+                        EditProduct(inventory);
                         break;
 
-                    case 4:
-                        Console.WriteLine("Enter the name of the product you want to delete: ");
-                        string productToDelete = Console.ReadLine();
-                        inventory.delete(productToDelete);
+                    case DeleteProductOption:
+                        DeleteProduct(inventory);
                         break;
 
-                    case 5:
-                        Console.WriteLine("Enter the name of the product you want to search for: ");
-                        string productToSearch = Console.ReadLine();
-                        inventory.search(productToSearch);
+                    case SearchProductOption:
+                        SearchProduct(inventory);
                         break;
 
-                    case 6:
+                    case ExitOption:
                         return;
 
                     default:
@@ -80,5 +56,117 @@ namespace Simple_Inventory_Management_System
                 }
             }
         }
+
+        private static void DisplayMenuOptions()
+        {
+            Console.WriteLine("- - - - - - - - - - - - - ");
+            Console.WriteLine("Choose what you need :  ");
+            Console.WriteLine($"{AddProductOption} - Add a product.");
+            Console.WriteLine($"{ViewAllProductsOption} - View all products.");
+            Console.WriteLine($"{EditProductOption} - Edit a product.");
+            Console.WriteLine($"{DeleteProductOption} - Delete a product.");
+            Console.WriteLine($"{SearchProductOption} - Search for a product.");
+            Console.WriteLine($"{ExitOption} - Exit.");
+            Console.WriteLine("- - - - - - - - - - - - - ");
+        }
+
+        private static void AddProduct(Inventory inventory)
+        {
+            Console.WriteLine("Enter the name of the product: ");
+            string productName = Console.ReadLine();
+
+            Console.WriteLine("Enter the price of the product: ");
+            decimal productPrice;
+            if (!decimal.TryParse(Console.ReadLine(), out productPrice) || productPrice < 0)
+            {
+                Console.WriteLine("Invalid price input. Please enter a valid non-negative number.");
+                return;
+            }
+
+            Console.WriteLine("Enter the quantity of the product: ");
+            int productQuantity;
+            if (!int.TryParse(Console.ReadLine(), out productQuantity) || productQuantity < 0)
+            {
+                Console.WriteLine("Invalid quantity input. Please enter a valid non-negative number.");
+                return;
+            }
+
+            if (inventory.Add(new Product(productName, productPrice, productQuantity)))
+                Console.WriteLine("Product added :)");
+            else
+                Console.WriteLine("Product not valid :(");
+        }
+        private static void ViewAllProducts(Inventory inventory)
+        {
+            var productsToPrint = inventory.Display();
+            if (productsToPrint.Count == 0)
+            {
+                Console.WriteLine("No products in the inventory.");
+            }
+            else
+            {
+                var productDetails = productsToPrint.Select(p => $"Name: {p.Name} || Price: {p.Price} || Quantity: {p.Quantity}");
+                string output = string.Join(Environment.NewLine, productDetails);
+                Console.WriteLine(output);
+            }
+        }
+            private static void EditProduct(Inventory inventory)
+            {
+            Console.WriteLine("Enter the name of the product you want to edit: ");
+            var productToEdit = Console.ReadLine();
+            Console.WriteLine("Enter the new name: ");
+            string newName = Console.ReadLine();
+            Console.WriteLine("Enter the new price: ");
+            decimal newPrice;
+            if (!decimal.TryParse(Console.ReadLine(), out newPrice) || newPrice < 0)
+            {
+                Console.WriteLine("Invalid price input. Please enter a valid non-negative number.");
+                return;
+            }
+            Console.WriteLine("Enter the new quantity: ");
+            int newQuantity;
+            if (!int.TryParse(Console.ReadLine(), out newQuantity) || newQuantity < 0)
+            {
+                Console.WriteLine("Invalid quantity input. Please enter a valid non-negative number.");
+                return;
+            }
+            if (inventory.Edit(productToEdit, newName, newPrice, newQuantity))
+                Console.WriteLine("Item edited :)");
+            else
+                Console.WriteLine("Item does not exist !!");
+        }
+
+        private static void DeleteProduct(Inventory inventory)
+        {
+            Console.WriteLine("Enter the name of the product you want to delete: ");
+            var productToDelete = Console.ReadLine();
+            if (inventory.Delete(productToDelete))
+            {
+                Console.WriteLine("Product is deleted :)");
+            }
+            else
+            {
+                Console.WriteLine("Item does not exist !!");
+            }
+        }
+
+            private static void SearchProduct(Inventory inventory)
+            {
+                Console.WriteLine("Enter the name of the product that you want to search for: ");
+                var productToSearch = Console.ReadLine();
+                var searchedProduct = inventory.Search(productToSearch);
+                if (searchedProduct != null)
+                {
+                    Console.WriteLine($"Name: {searchedProduct.Name} || Price: {searchedProduct.Price} || Quantity: {searchedProduct.Quantity}");
+                }
+                else
+                {
+                    Console.WriteLine("Item does not exist !! ");
+                }
+            }
+        }
     }
-}
+
+
+
+
