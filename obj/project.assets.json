@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ola\\Desktop\\Simple Inventory Management System\\Simple Inventory Management System\\Simple Inventory Management System.csproj",
+      "projectUniqueName": "C:\\Users\\Ola\\Desktop\\Simple-Inventory-Management-System\\Simple Inventory Management System.csproj",
       "projectName": "Simple Inventory Management System",
-      "projectPath": "C:\\Users\\Ola\\Desktop\\Simple Inventory Management System\\Simple Inventory Management System\\Simple Inventory Management System.csproj",
+      "projectPath": "C:\\Users\\Ola\\Desktop\\Simple-Inventory-Management-System\\Simple Inventory Management System.csproj",
       "packagesPath": "C:\\Users\\Ola\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ola\\Desktop\\Simple Inventory Management System\\Simple Inventory Management System\\obj\\",
+      "outputPath": "C:\\Users\\Ola\\Desktop\\Simple-Inventory-Management-System\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ola\\AppData\\Roaming\\NuGet\\NuGet.Config",
