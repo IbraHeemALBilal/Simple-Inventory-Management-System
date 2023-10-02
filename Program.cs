@@ -2,7 +2,7 @@
 
 namespace SimpleInventoryManagementSystem
 {
-    internal class Program
+    public class Program
     {
         private const int AddProductOption = 1;
         private const int ViewAllProductsOption = 2;
@@ -10,21 +10,20 @@ namespace SimpleInventoryManagementSystem
         private const int DeleteProductOption = 4;
         private const int SearchProductOption = 5;
         private const int ExitOption = 6;
-
         static void Main(string[] args)
         {
-            var inventory = new Inventory();
+            //var inventory = new InventoryUsingSql();
+            var inventory = new InventoryUsingMongo();
+            //var inventory = new InventoryUsingEfCore();
             int choice;
             while (true)
             {
                 DisplayMenuOptions();
-
                 if (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 6)
                 {
                     Console.WriteLine("Invalid input. Please choose a number from 1-6.");
                     continue;
                 }
-
                 switch (choice)
                 {
                     case AddProductOption:
@@ -32,7 +31,7 @@ namespace SimpleInventoryManagementSystem
                         break;
 
                     case ViewAllProductsOption:
-                        ViewAllProducts( inventory);
+                        ViewAllProducts(inventory);
                         break;
 
                     case EditProductOption:
@@ -49,28 +48,14 @@ namespace SimpleInventoryManagementSystem
 
                     case ExitOption:
                         return;
-
+                   
                     default:
                         Console.WriteLine("Invalid choice. Please choose a number from 1 - 6.");
                         break;
                 }
             }
         }
-
-        private static void DisplayMenuOptions()
-        {
-            Console.WriteLine("- - - - - - - - - - - - - ");
-            Console.WriteLine("Choose what you need :  ");
-            Console.WriteLine($"{AddProductOption} - Add a product.");
-            Console.WriteLine($"{ViewAllProductsOption} - View all products.");
-            Console.WriteLine($"{EditProductOption} - Edit a product.");
-            Console.WriteLine($"{DeleteProductOption} - Delete a product.");
-            Console.WriteLine($"{SearchProductOption} - Search for a product.");
-            Console.WriteLine($"{ExitOption} - Exit.");
-            Console.WriteLine("- - - - - - - - - - - - - ");
-        }
-
-        private static void AddProduct(Inventory inventory)
+        private static void AddProduct(IInventoryManagment inventory)
         {
             Console.WriteLine("Enter the name of the product: ");
             string productName = Console.ReadLine();
@@ -91,14 +76,26 @@ namespace SimpleInventoryManagementSystem
                 return;
             }
 
-            if (inventory.Add(new Product(productName, productPrice, productQuantity)))
+            if (inventory.AddProduct(new Product(productName, productPrice, productQuantity)))
                 Console.WriteLine("Product added :)");
             else
                 Console.WriteLine("Product not valid :(");
         }
-        private static void ViewAllProducts(Inventory inventory)
+        private static void DisplayMenuOptions()
         {
-            var productsToPrint = inventory.Display();
+            Console.WriteLine("- - - - - - - - - - - - - ");
+            Console.WriteLine("Choose what you need :  ");
+            Console.WriteLine($"{AddProductOption} - Add a product.");
+            Console.WriteLine($"{ViewAllProductsOption} - View all products.");
+            Console.WriteLine($"{EditProductOption} - Edit a product.");
+            Console.WriteLine($"{DeleteProductOption} - Delete a product.");
+            Console.WriteLine($"{SearchProductOption} - Search for a product.");
+            Console.WriteLine($"{ExitOption} - Exit.");
+            Console.WriteLine("- - - - - - - - - - - - - ");
+        }
+        private static void ViewAllProducts(IInventoryManagment inventory)
+        {
+            var productsToPrint = inventory.FetchAllProducts();
             if (productsToPrint.Count == 0)
             {
                 Console.WriteLine("No products in the inventory.");
@@ -110,7 +107,7 @@ namespace SimpleInventoryManagementSystem
                 Console.WriteLine(output);
             }
         }
-            private static void EditProduct(Inventory inventory)
+        private static void EditProduct(IInventoryManagment inventory)
             {
             Console.WriteLine("Enter the name of the product you want to edit: ");
             var productToEdit = Console.ReadLine();
@@ -130,17 +127,16 @@ namespace SimpleInventoryManagementSystem
                 Console.WriteLine("Invalid quantity input. Please enter a valid non-negative number.");
                 return;
             }
-            if (inventory.Edit(productToEdit, newName, newPrice, newQuantity))
+            if (inventory.EditProduct(productToEdit, newName, newPrice, newQuantity))
                 Console.WriteLine("Item edited :)");
             else
                 Console.WriteLine("Item does not exist !!");
         }
-
-        private static void DeleteProduct(Inventory inventory)
+        private static void DeleteProduct(IInventoryManagment inventory)
         {
             Console.WriteLine("Enter the name of the product you want to delete: ");
             var productToDelete = Console.ReadLine();
-            if (inventory.Delete(productToDelete))
+            if (inventory.DeleteProduct(productToDelete))
             {
                 Console.WriteLine("Product is deleted :)");
             }
@@ -149,12 +145,11 @@ namespace SimpleInventoryManagementSystem
                 Console.WriteLine("Item does not exist !!");
             }
         }
-
-            private static void SearchProduct(Inventory inventory)
+        private static void SearchProduct(IInventoryManagment inventory)
             {
                 Console.WriteLine("Enter the name of the product that you want to search for: ");
                 var productToSearch = Console.ReadLine();
-                var searchedProduct = inventory.Search(productToSearch);
+                var searchedProduct = inventory.SearchForProduct(productToSearch);
                 if (searchedProduct != null)
                 {
                     Console.WriteLine($"Name: {searchedProduct.Name} || Price: {searchedProduct.Price} || Quantity: {searchedProduct.Quantity}");
@@ -164,8 +159,8 @@ namespace SimpleInventoryManagementSystem
                     Console.WriteLine("Item does not exist !! ");
                 }
             }
-        }
     }
+}
 
 
 
