@@ -1,0 +1,15 @@
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\bin\Debug\net6.0\ISSHAR.Application.deps.json
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\bin\Debug\net6.0\ISSHAR.Application.dll
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\bin\Debug\net6.0\ISSHAR.Application.pdb
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\bin\Debug\net6.0\ISSHAR.DAL.dll
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\bin\Debug\net6.0\ISSHAR.DAL.pdb
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\obj\Debug\net6.0\ISSHAR.Application.csproj.AssemblyReference.cache
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\obj\Debug\net6.0\ISSHAR.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\obj\Debug\net6.0\ISSHAR.Application.AssemblyInfoInputs.cache
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\obj\Debug\net6.0\ISSHAR.Application.AssemblyInfo.cs
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\obj\Debug\net6.0\ISSHAR.Application.csproj.CoreCompileInputs.cache
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\obj\Debug\net6.0\ISSHAR.Application.csproj.CopyComplete
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\obj\Debug\net6.0\ISSHAR.Application.dll
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\obj\Debug\net6.0\refint\ISSHAR.Application.dll
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\obj\Debug\net6.0\ISSHAR.Application.pdb
+C:\Users\Ola\Desktop\ISSHAR\ISSHAR.Application\obj\Debug\net6.0\ref\ISSHAR.Application.dll
